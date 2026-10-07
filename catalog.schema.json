@@ -1,0 +1,69 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Student Council Room catalog",
+  "type": "object",
+  "required": ["site", "objects"],
+  "properties": {
+    "site": {
+      "type": "object",
+      "required": ["title", "character"],
+      "properties": {
+        "title": { "type": "string" },
+        "edition": { "type": "string" },
+        "tagline": { "type": "string" },
+        "character": {
+          "type": "object",
+          "required": ["name"],
+          "properties": { "name": { "type": "string" }, "note": { "type": "string" } }
+        }
+      }
+    },
+    "objects": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "kind", "name", "object", "line", "spot", "tools"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^[a-z][a-z0-9-]*$" },
+          "kind": { "enum": ["chapter", "meta"] },
+          "name": { "type": "string" },
+          "object": { "type": "string", "description": "the room fixture this opens, e.g. chalkboard" },
+          "line": { "type": "string", "description": "what the president says" },
+          "spot": {
+            "type": "object",
+            "required": ["x", "y", "w", "h"],
+            "properties": {
+              "x": { "type": "number" }, "y": { "type": "number" },
+              "w": { "type": "number" }, "h": { "type": "number" }
+            }
+          },
+          "links": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["label", "href"],
+              "properties": { "label": { "type": "string" }, "href": { "type": "string" } }
+            }
+          },
+          "tools": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["id", "name", "job", "status"],
+              "properties": {
+                "id": { "type": "string", "pattern": "^mh-[a-z]+-\\d+$" },
+                "name": { "type": "string" },
+                "job": { "type": "string" },
+                "platform": { "type": "string" },
+                "lang": { "type": "string" },
+                "status": { "enum": ["shipped", "beta", "planned", "retired"] },
+                "sample": { "type": "boolean" },
+                "links": { "type": "object" }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
