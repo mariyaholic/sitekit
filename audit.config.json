@@ -1,0 +1,35 @@
+{
+  "siteDir": "site",
+  "catalog": "catalog.json",
+  "page": "index.html",
+  "viewports": [375, 1440],
+  "viewportHeight": 900,
+  "port": 0,
+  "shots": false,
+  "selectors": {
+    "stage": ".stage svg",
+    "hotspot": ".spot",
+    "notebookRow": ".row",
+    "notebookSection": ".notebook .chapter",
+    "notebookHeading": ".notebook .chapter h3",
+    "window": "#win",
+    "windowTitle": "#win-title",
+    "windowTools": "#win-tools",
+    "toolCard": ".card[data-tool]",
+    "toolSpec": "#win-tools .spec",
+    "backButton": "#win-acts button",
+    "hiddenCheck": [".spot", ".notebook", ".masthead"],
+    "reducedMotionMarker": ".lamp-glow"
+  },
+  "reducedMotion": {
+    "requiredOpacity": 1.0
+  },
+  "tokenChecks": {
+    "--void": "#060509",
+    "--room": "#0b0913",
+    "--sea": "#241d40",
+    "--lav": "#a497d6",
+    "--lamp": "#bb9955",
+    "--lamp-hi": "#d8b878"
+  }
+}
