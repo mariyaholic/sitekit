@@ -12,4 +12,8 @@ All notable changes to this project are documented here. The format follows
 
 ### Fixed
 
+- Validate nested schemas even when data is absent or arrays are empty.
+- Serve files from verified open handles and reject raced symlinks.
+- Check source whitespace in CI on clean checkouts and pin Python dependencies.
+
 - Reject malformed audit catalog statuses and slugs and foreign audit server requests.
