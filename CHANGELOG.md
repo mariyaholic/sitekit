@@ -10,6 +10,10 @@ All notable changes to this project are documented here. The format follows
 - Catalog-driven static site builder and optional browser audit.
 - Cross-platform build scripts, CI configuration, and contribution guidance.
 
+### Changed
+
+- Record the Manager's acceptance of PSF-2.0 for the pinned greenlet and typing_extensions dependencies.
+
 ### Fixed
 
 - Validate nested schemas even when data is absent or arrays are empty.

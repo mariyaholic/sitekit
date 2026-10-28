@@ -19,10 +19,11 @@ virtual environment; raw metadata is retained in the review scratch directory.
 | pluggy | 1.7.0 | MIT | Tests |
 | Pygments | 2.21.0 | BSD-2-Clause | Tests |
 
-**Licence exceptions:** PSF-2.0 is outside the project's permitted dependency
-list. Both greenlet and typing_extensions require review or replacement before
-redistribution. The external Python runtime also uses PSF-2.0 and is not
-bundled. Node.js is an external runtime. Playwright's installed distribution
+**PSF-2.0 acceptance:** greenlet 3.5.6 and typing_extensions 4.16.0 were
+accepted by the Manager on 2026-10-28 because PSF-2.0 is permissive,
+OSI-approved, and attribution is retained. Preserve the applicable PSF licence
+text and attribution with redistributed components. The external Python runtime
+also uses PSF-2.0 and is not bundled. Node.js is an external runtime. Playwright's installed distribution
 contains a driver and bundled third-party notices; browser binaries are
 separate and were not audited. Preserve upstream licence and notice files when
 redistributing these components; no browser is redistributed by sitekit.
@@ -40,4 +41,6 @@ review before redistribution; no additional attribution can be verified offline.
 
 When adding dependencies, record version, licence and verification here. The
 allowed list is MIT, BSD, ISC, Apache-2.0, Zlib, Unicode and justified CC0 or
-public domain; flag anything else for review.
+public domain. PSF-2.0 is also allowed for greenlet 3.5.6 and
+typing_extensions 4.16.0 under the Manager's acceptance above; flag other
+licences and other uses of PSF-2.0 for review.

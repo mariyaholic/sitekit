@@ -13,8 +13,7 @@ its generated output. Node tests cover validation, rendering, golden files,
 CLI errors and freshness; Python tests cover configuration, expectations,
 server containment, reporting and browser behaviour.
 
-The Linux review environment built the example and passed the socket-free
-schema and descriptor tests. Full suites and browser audit were blocked by
-child-process and loopback socket restrictions; see STATUS.md. Real Windows
+The Linux review built the example and passed the Node suite, the Python suite
+and the browser audit; see STATUS.md for counts and commands. Real Windows
 checks are needed for the open-handle containment code, symlinks, PowerShell,
 and Chromium, Edge and Chrome. No native executable is built.
