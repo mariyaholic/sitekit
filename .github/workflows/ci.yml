@@ -1,0 +1,29 @@
+name: CI
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4 # TODO pin to commit SHA before publishing
+      - uses: actions/setup-node@v4 # TODO pin to commit SHA before publishing
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5 # TODO pin to commit SHA before publishing
+        with:
+          python-version: '3.13'
+      - run: python -m pip install -r requirements-dev.txt
+      - run: python -m playwright install chromium
+      - name: Check formatting
+        run: git diff --check
+      - name: Check source syntax
+        shell: pwsh
+        run: |
+          Get-ChildItem src,tests/node,scripts -Filter *.mjs -Recurse | ForEach-Object { node --check $_.FullName; if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE } }
+          python -m compileall -q sitekit_audit tests/python audit.py
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+      - run: ./scripts/build.ps1
+      - run: npm test
+        env:
+          SITEKIT_PYTHON: python
