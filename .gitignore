@@ -10,3 +10,6 @@ __pycache__/
 
 # Test scratch space
 tests/tmp/
+node_modules/
+coverage/
+scratch/
