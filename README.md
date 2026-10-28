@@ -26,7 +26,7 @@ CLI contract, and [ROADMAP.md](ROADMAP.md) for what is out of scope.
 
 ```bash
 python3 -m venv .venv
-.venv/bin/pip install -r requirements-dev.txt
+.venv/bin/pip install -r requirements-dev.txt  # exact reviewed versions
 .venv/bin/python -m playwright install chromium
 
 node build.mjs                 # writes dist/ from the example catalog
@@ -67,7 +67,7 @@ failure, never a silent pass.
 
 The catalog is validated against a documented **six-keyword** JSON Schema
 subset (`type`, `properties`, `required`, `items`, `enum`,
-`additionalProperties`). Unsupported keywords encountered while validating present data fail by default so partial
+`additionalProperties`). Unsupported keywords anywhere in supported subschemas fail by default so partial
 validation cannot be mistaken for full JSON Schema support. Room ids map to
 fixed asset paths (`assets/rooms/<id>.svg`); the page contract, ARIA wiring
 and audit report shape are documented in
@@ -105,3 +105,6 @@ does not currently ship Windows binaries.
 
 See [docs/TESTING.md](docs/TESTING.md) for test guidance, and
 [THIRD_PARTY.md](THIRD_PARTY.md) for dependency licences.
+
+Python requirements pin the reviewed runtime and test dependencies exactly.
+See [THIRD_PARTY.md](THIRD_PARTY.md) for licence exceptions and asset provenance.
