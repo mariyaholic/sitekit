@@ -1,0 +1,20 @@
+{
+  "root": "dist",
+  "catalog": "examples/room-catalog/catalog.json",
+  "report": "audit-report.json",
+  "browser": "auto",
+  "timeout_ms": 15000,
+  "viewports": [
+    { "name": "narrow", "width": 375, "height": 812 },
+    { "name": "wide", "width": 1280, "height": 800 }
+  ],
+  "tokens": {
+    "selectors": {
+      ":root": {
+        "--sk-color-ink": "#14201b",
+        "--sk-color-paper": "#f7f4ec",
+        "--sk-color-accent": "#1f6f5c"
+      }
+    }
+  }
+}

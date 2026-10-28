@@ -1,0 +1,12 @@
+# Build output
+dist/
+audit-report.json
+
+# Python tooling
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Test scratch space
+tests/tmp/
