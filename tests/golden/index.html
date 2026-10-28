@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="A small catalog of working rooms, rendered as one static page and checked by one audit command.">
+    <title>Atrium Rooms</title>
+    <link rel="stylesheet" href="assets/site.css">
+    <script src="assets/site.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#content">Skip to content</a>
+    <header class="site-header">
+      <h1>Atrium Rooms</h1>
+      <p class="site-tagline">One page, four rooms, no build framework.</p>
+    </header>
+    <nav class="room-nav" aria-label="Rooms">
+      <ul>
+        <li><a href="#room-studio">Studio</a></li>
+        <li><a href="#room-library">Library</a></li>
+        <li><a href="#room-workshop">Workshop</a></li>
+        <li><a href="#room-garden">Garden</a></li>
+      </ul>
+    </nav>
+    <main id="content">
+      <section class="room" id="room-studio" data-room-id="studio" aria-labelledby="room-studio-title">
+        <header class="room__header">
+          <h2 id="room-studio-title">Studio</h2>
+          <p class="room__status" data-status="open">Open</p>
+        </header>
+        <img class="room__image" src="assets/rooms/studio.svg" alt="Illustration for Studio" width="320" height="180">
+        <p class="room__summary">A quiet room with a wide desk, good daylight and shelves for current work.</p>
+        <ul class="room__tags" aria-label="Tags">
+          <li class="room__tag">writing</li>
+          <li class="room__tag">daylight</li>
+        </ul>
+        <button class="room__toggle" type="button" aria-expanded="false" aria-controls="room-studio-details" aria-label="Details for Studio">Details</button>
+        <div class="room__details" id="room-studio-details" hidden>
+          <h3 class="room__items-title">Items</h3>
+          <ul class="room__items">
+            <li class="room__item" data-item-id="desk">
+              <span class="room__item-label">Oak desk</span>
+              <span class="room__item-note">Faces the east window.</span>
+            </li>
+            <li class="room__item" data-item-id="shelf">
+              <span class="room__item-label">Project shelf</span>
+              <span class="room__item-note">Holds work in progress only.</span>
+            </li>
+          </ul>
+        </div>
+      </section>
+      <section class="room" id="room-library" data-room-id="library" aria-labelledby="room-library-title">
+        <header class="room__header">
+          <h2 id="room-library-title">Library</h2>
+          <p class="room__status" data-status="open">Open</p>
+        </header>
+        <img class="room__image" src="assets/rooms/library.svg" alt="Illustration for Library" width="320" height="180">
+        <p class="room__summary">Reference books, atlases and a chair that discourages hurry.</p>
+        <ul class="room__tags" aria-label="Tags">
+          <li class="room__tag">reading</li>
+          <li class="room__tag">quiet</li>
+        </ul>
+        <button class="room__toggle" type="button" aria-expanded="false" aria-controls="room-library-details" aria-label="Details for Library">Details</button>
+        <div class="room__details" id="room-library-details" hidden>
+          <h3 class="room__items-title">Items</h3>
+          <ul class="room__items">
+            <li class="room__item" data-item-id="reading-chair">
+              <span class="room__item-label">Reading chair</span>
+              <span class="room__item-note">Faces the garden door.</span>
+            </li>
+            <li class="room__item" data-item-id="atlas-case">
+              <span class="room__item-label">Atlas case</span>
+              <span class="room__item-note">Maps are catalogued by region.</span>
+            </li>
+            <li class="room__item" data-item-id="index">
+              <span class="room__item-label">Card index</span>
+              <span class="room__item-note">The only borrow log we keep.</span>
+            </li>
+          </ul>
+        </div>
+      </section>
+      <section class="room" id="room-workshop" data-room-id="workshop" aria-labelledby="room-workshop-title">
+        <header class="room__header">
+          <h2 id="room-workshop-title">Workshop</h2>
+          <p class="room__status" data-status="planned">Planned</p>
+        </header>
+        <img class="room__image" src="assets/rooms/workshop.svg" alt="Illustration for Workshop" width="320" height="180">
+        <p class="room__summary">A making room in progress: benches first, then the tool wall and paint rack.</p>
+        <ul class="room__tags" aria-label="Tags">
+          <li class="room__tag">making</li>
+          <li class="room__tag">tools</li>
+        </ul>
+        <button class="room__toggle" type="button" aria-expanded="false" aria-controls="room-workshop-details" aria-label="Details for Workshop">Details</button>
+        <div class="room__details" id="room-workshop-details" hidden>
+          <h3 class="room__items-title">Items</h3>
+          <ul class="room__items">
+            <li class="room__item" data-item-id="bench">
+              <span class="room__item-label">Shared bench</span>
+            </li>
+            <li class="room__item" data-item-id="tool-wall">
+              <span class="room__item-label">Tool wall</span>
+              <span class="room__item-note">Every tool has a painted outline.</span>
+            </li>
+            <li class="room__item" data-item-id="paint-rack">
+              <span class="room__item-label">Paint rack</span>
+              <span class="room__item-note">Ventilated, away from the door.</span>
+            </li>
+          </ul>
+        </div>
+      </section>
+      <section class="room" id="room-garden" data-room-id="garden" aria-labelledby="room-garden-title">
+        <header class="room__header">
+          <h2 id="room-garden-title">Garden</h2>
+          <p class="room__status" data-status="closed">Closed</p>
+        </header>
+        <img class="room__image" src="assets/rooms/garden.svg" alt="Illustration for Garden" width="320" height="180">
+        <p class="room__summary">Raised beds and a bench, resting under mulch until the spring planting.</p>
+        <ul class="room__tags" aria-label="Tags">
+          <li class="room__tag">plants</li>
+          <li class="room__tag">air</li>
+        </ul>
+        <button class="room__toggle" type="button" aria-expanded="false" aria-controls="room-garden-details" aria-label="Details for Garden">Details</button>
+        <div class="room__details" id="room-garden-details" hidden>
+          <h3 class="room__items-title">Items</h3>
+          <ul class="room__items">
+            <li class="room__item" data-item-id="planter-beds">
+              <span class="room__item-label">Planter beds</span>
+              <span class="room__item-note">Four beds, one for herbs.</span>
+            </li>
+            <li class="room__item" data-item-id="bench">
+              <span class="room__item-label">Stone bench</span>
+              <span class="room__item-note">Under the pear tree.</span>
+            </li>
+          </ul>
+        </div>
+      </section>
+    </main>
+    <footer class="site-footer">
+      <p>Made by Maria. Free and open source (Apache-2.0).</p>
+    </footer>
+  </body>
+</html>

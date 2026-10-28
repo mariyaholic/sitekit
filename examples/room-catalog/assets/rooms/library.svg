@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 180" width="320" height="180" role="img" aria-labelledby="library-title">
+  <!-- SPDX-License-Identifier: Apache-2.0 -->
+  <title id="library-title">Library illustration: shelves and a reading chair.</title>
+  <rect width="320" height="180" fill="#efeae0"/>
+  <rect x="30" y="30" width="110" height="110" fill="#f7f4ec" stroke="#5d6b63" stroke-width="4"/>
+  <line x1="30" y1="66" x2="140" y2="66" stroke="#5d6b63" stroke-width="3"/>
+  <line x1="30" y1="102" x2="140" y2="102" stroke="#5d6b63" stroke-width="3"/>
+  <rect x="40" y="42" width="8" height="24" fill="#1f6f5c"/>
+  <rect x="52" y="38" width="8" height="28" fill="#8a4b2f"/>
+  <rect x="64" y="46" width="8" height="20" fill="#8a6547"/>
+  <rect x="40" y="76" width="8" height="26" fill="#8a4b2f"/>
+  <rect x="52" y="72" width="8" height="30" fill="#1f6f5c"/>
+  <rect x="196" y="92" width="70" height="46" rx="10" fill="#1f6f5c"/>
+  <rect x="188" y="78" width="86" height="26" rx="10" fill="#2b8a73"/>
+  <rect x="196" y="138" width="10" height="14" fill="#5d6b63"/>
+  <rect x="256" y="138" width="10" height="14" fill="#5d6b63"/>
+  <circle cx="230" cy="48" r="18" fill="#f7f4ec" stroke="#8a6547" stroke-width="3"/>
+  <line x1="230" y1="66" x2="230" y2="82" stroke="#8a6547" stroke-width="3"/>
+</svg>
