@@ -107,4 +107,4 @@ See [docs/TESTING.md](docs/TESTING.md) for test guidance, and
 [THIRD_PARTY.md](THIRD_PARTY.md) for dependency licences.
 
 Python requirements pin the reviewed runtime and test dependencies exactly.
-See [THIRD_PARTY.md](THIRD_PARTY.md) for licence exceptions and asset provenance.
+See [THIRD_PARTY.md](THIRD_PARTY.md) for dependency licence policy and asset provenance.
