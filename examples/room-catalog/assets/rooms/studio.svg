@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 180" width="320" height="180" role="img" aria-labelledby="studio-title">
+  <!-- SPDX-License-Identifier: Apache-2.0 -->
+  <title id="studio-title">Studio illustration: a desk facing a bright window.</title>
+  <rect width="320" height="180" fill="#e7efe6"/>
+  <rect x="34" y="26" width="92" height="76" fill="#f7f4ec" stroke="#1f6f5c" stroke-width="4"/>
+  <line x1="80" y1="26" x2="80" y2="102" stroke="#1f6f5c" stroke-width="3"/>
+  <line x1="34" y1="64" x2="126" y2="64" stroke="#1f6f5c" stroke-width="3"/>
+  <rect x="150" y="96" width="132" height="10" rx="3" fill="#8a6547"/>
+  <rect x="162" y="106" width="8" height="42" fill="#8a6547"/>
+  <rect x="262" y="106" width="8" height="42" fill="#8a6547"/>
+  <rect x="196" y="72" width="46" height="24" rx="2" fill="#f7f4ec" stroke="#5d6b63" stroke-width="2"/>
+  <circle cx="86" cy="130" r="22" fill="#1f6f5c" opacity="0.18"/>
+</svg>

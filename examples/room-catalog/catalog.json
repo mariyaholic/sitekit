@@ -1,0 +1,56 @@
+{
+  "version": 1,
+  "site": {
+    "title": "Atrium Rooms",
+    "tagline": "One page, four rooms, no build framework.",
+    "description": "A small catalog of working rooms, rendered as one static page and checked by one audit command."
+  },
+  "rooms": [
+    {
+      "id": "studio",
+      "name": "Studio",
+      "status": "open",
+      "summary": "A quiet room with a wide desk, good daylight and shelves for current work.",
+      "tags": ["writing", "daylight"],
+      "items": [
+        { "id": "desk", "label": "Oak desk", "note": "Faces the east window." },
+        { "id": "shelf", "label": "Project shelf", "note": "Holds work in progress only." }
+      ]
+    },
+    {
+      "id": "library",
+      "name": "Library",
+      "status": "open",
+      "summary": "Reference books, atlases and a chair that discourages hurry.",
+      "tags": ["reading", "quiet"],
+      "items": [
+        { "id": "reading-chair", "label": "Reading chair", "note": "Faces the garden door." },
+        { "id": "atlas-case", "label": "Atlas case", "note": "Maps are catalogued by region." },
+        { "id": "index", "label": "Card index", "note": "The only borrow log we keep." }
+      ]
+    },
+    {
+      "id": "workshop",
+      "name": "Workshop",
+      "status": "planned",
+      "summary": "A making room in progress: benches first, then the tool wall and paint rack.",
+      "tags": ["making", "tools"],
+      "items": [
+        { "id": "bench", "label": "Shared bench" },
+        { "id": "tool-wall", "label": "Tool wall", "note": "Every tool has a painted outline." },
+        { "id": "paint-rack", "label": "Paint rack", "note": "Ventilated, away from the door." }
+      ]
+    },
+    {
+      "id": "garden",
+      "name": "Garden",
+      "status": "closed",
+      "summary": "Raised beds and a bench, resting under mulch until the spring planting.",
+      "tags": ["plants", "air"],
+      "items": [
+        { "id": "planter-beds", "label": "Planter beds", "note": "Four beds, one for herbs." },
+        { "id": "bench", "label": "Stone bench", "note": "Under the pear tree." }
+      ]
+    }
+  ]
+}

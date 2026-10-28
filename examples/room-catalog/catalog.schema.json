@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/sitekit/catalog.schema.json",
+  "title": "sitekit room catalog",
+  "description": "Example schema using only the six-keyword subset documented in docs/CONTRACT.md.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["version", "site", "rooms"],
+  "properties": {
+    "version": {
+      "type": "integer",
+      "enum": [1]
+    },
+    "site": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["title", "tagline", "description"],
+      "properties": {
+        "title": { "type": "string" },
+        "tagline": { "type": "string" },
+        "description": { "type": "string" }
+      }
+    },
+    "rooms": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "name", "status", "summary", "tags", "items"],
+        "properties": {
+          "id": { "type": "string" },
+          "name": { "type": "string" },
+          "status": {
+            "type": "string",
+            "enum": ["open", "closed", "planned"]
+          },
+          "summary": { "type": "string" },
+          "tags": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["id", "label"],
+              "properties": {
+                "id": { "type": "string" },
+                "label": { "type": "string" },
+                "note": { "type": "string" }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
