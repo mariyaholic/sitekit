@@ -65,3 +65,36 @@ def test_server_stops_after_the_context(built_site):
         base_url = server.base_url
     with pytest.raises(urllib.error.URLError):
         urllib.request.urlopen(base_url + "/index.html", timeout=2)
+
+
+@pytest.mark.parametrize("headers", [
+    {"Host": "evil.example"},
+    {"Origin": "http://evil.example"},
+])
+def test_rejects_foreign_host_or_origin(built_site, headers):
+    with SiteServer(built_site) as server:
+        connection = http.client.HTTPConnection(server.host, server.port, timeout=5)
+        try:
+            connection.request("GET", "/index.html", headers=headers)
+            response = connection.getresponse()
+            assert response.status == 403
+            response.read()
+        finally:
+            connection.close()
+
+
+def test_does_not_follow_symlink_outside_root(built_site, scratch_factory):
+    outside = scratch_factory() / "secret.txt"
+    outside.write_text("secret", encoding="utf-8")
+    link = built_site / "outside-link"
+    try:
+        link.symlink_to(outside)
+    except OSError:
+        pytest.skip("symlink creation unavailable")
+    try:
+        with SiteServer(built_site) as server:
+            with pytest.raises(urllib.error.HTTPError) as error:
+                fetch(server, "/outside-link")
+            assert error.value.code == 404
+    finally:
+        link.unlink()
