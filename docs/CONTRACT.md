@@ -60,8 +60,9 @@ The validator trusts **only these six validating keywords**:
 `$schema`, `$id`, `title`, `description`, `default` and `$comment` are allowed
 as annotations and do not validate anything.
 
-Other keywords (`oneOf`, `pattern`, `minItems`, `format`, ...) encountered
-while validating present data are errors by default, because silently ignoring it would suggest full JSON Schema support.
+Other keywords (`oneOf`, `pattern`, `minItems`, `format`, ...) in supported
+subschemas are errors by default, even when the corresponding data is absent.
+Silently ignoring them would suggest full JSON Schema support.
 `--warn-unsupported` downgrades those errors to warnings, and the CLI prints
 each one. This is a documented subset, not a JSON Schema implementation.
 

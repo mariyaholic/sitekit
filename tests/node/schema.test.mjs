@@ -134,3 +134,14 @@ test("escapes JSON pointer segments in paths", () => {
   );
   assert.equal(result.errors[0].path, "/a~1b~0c");
 });
+
+test("checks schemas for absent properties and empty arrays once", () => {
+  const schema = { properties: { missing: { pattern: "x" }, list: { items: { type: [] } } } };
+  const result = validate(schema, { list: [] });
+  assert.deepEqual(result.errors.map((entry) => entry.path), [
+    "/properties/missing/pattern", "/properties/list/items/type",
+  ]);
+  const warned = validate({ items: { pattern: "x" } }, ["a", "b"], { warnUnsupported: true });
+  assert.equal(warned.warnings.length, 1);
+  assert.equal(warned.warnings[0].path, "/items/pattern");
+});
