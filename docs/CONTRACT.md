@@ -60,8 +60,8 @@ The validator trusts **only these six validating keywords**:
 `$schema`, `$id`, `title`, `description`, `default` and `$comment` are allowed
 as annotations and do not validate anything.
 
-Any other keyword (`oneOf`, `pattern`, `minItems`, `format`, ...) is an error by
-default, because silently ignoring it would suggest full JSON Schema support.
+Other keywords (`oneOf`, `pattern`, `minItems`, `format`, ...) encountered
+while validating present data are errors by default, because silently ignoring it would suggest full JSON Schema support.
 `--warn-unsupported` downgrades those errors to warnings, and the CLI prints
 each one. This is a documented subset, not a JSON Schema implementation.
 
@@ -148,8 +148,8 @@ python3 audit.py [--config <file>] [--root <dir>] [--catalog <file>]
 ```
 
 `--root` is the directory served over loopback (default `dist`); `--catalog` is
-the source of expected content. Values override `audit.config.json`, which
-overrides built-in defaults. Browser names: `auto`, `msedge`, `chrome`,
+the source of expected content. CLI values override the file supplied with `--config`, which overrides
+built-in defaults. The example `audit.config.json` is not loaded automatically. Browser names: `auto`, `msedge`, `chrome`,
 `chromium`; `auto` tries Edge, then Chrome, then Playwright's bundled Chromium.
 
 The audit starts an HTTP server on `127.0.0.1` with a random port, checks the

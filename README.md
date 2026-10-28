@@ -5,7 +5,7 @@ Made by Maria
 Release a catalog-driven static-page generator and browser audit gate as an
 Apache-2.0 developer tool.
 
-Free and open source (Apache-2.0). See [LICENSE](LICENSE) and [NOTICE](NOTICE).
+free and open source (Apache-2.0). See [LICENSE](LICENSE) and [NOTICE](NOTICE).
 
 sitekit renders one room-style catalog into a deterministic static page and
 Markdown, then checks the built page in a real browser against the same
@@ -22,7 +22,7 @@ CLI contract, and [ROADMAP.md](ROADMAP.md) for what is out of scope.
 - Playwright for Python plus one supported browser for the audit
   (Edge, Chrome or Playwright's bundled Chromium).
 
-## Quick start
+## Install and build
 
 ```bash
 python3 -m venv .venv
@@ -36,6 +36,15 @@ node build.mjs --check         # CI gate: fails when dist/ is stale
 
 Change a catalog entry, run `node build.mjs --check`, and stale generated
 files are named without anything being written.
+
+The deterministic build and freshness check also run together via
+`./scripts/build.sh` or `scripts/build.ps1` on Windows. Generated `dist/`
+and `audit-report.json` are local outputs and are not tracked.
+
+## Usage and configuration
+
+Configure audit viewports, tokens and paths with `--config audit.config.json`;
+CLI flags override configuration values. See [the contract](docs/CONTRACT.md).
 
 ## Commands
 
@@ -58,7 +67,7 @@ failure, never a silent pass.
 
 The catalog is validated against a documented **six-keyword** JSON Schema
 subset (`type`, `properties`, `required`, `items`, `enum`,
-`additionalProperties`). Unsupported keywords fail by default so partial
+`additionalProperties`). Unsupported keywords encountered while validating present data fail by default so partial
 validation cannot be mistaken for full JSON Schema support. Room ids map to
 fixed asset paths (`assets/rooms/<id>.svg`); the page contract, ARIA wiring
 and audit report shape are documented in
@@ -90,7 +99,9 @@ step.
 
 Early development, v1 scope. Not affiliated with MetaQuotes; MetaTrader 5
 (MT5) is a MetaQuotes trademark, and sitekit contains no MT5 integration.
-Releases are not code-signed yet.
+Windows binaries, if produced in future, are not code-signed yet; Windows
+SmartScreen may warn when they are downloaded or run. This source-only project
+does not currently ship Windows binaries.
 
-See [STATUS.md](STATUS.md) for the current build/test results, and
+See [docs/TESTING.md](docs/TESTING.md) for test guidance, and
 [THIRD_PARTY.md](THIRD_PARTY.md) for dependency licences.
