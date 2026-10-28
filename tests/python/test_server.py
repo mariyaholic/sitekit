@@ -98,3 +98,28 @@ def test_does_not_follow_symlink_outside_root(built_site, scratch_factory):
             assert error.value.code == 404
     finally:
         link.unlink()
+
+
+def test_open_rejects_symlink_swapped_before_open(tmp_path, monkeypatch):
+    import os
+    from sitekit_audit.server import _open_contained
+
+    if os.name == "nt":
+        pytest.skip("POSIX descriptor-relative open test")
+    root = tmp_path / "root"
+    root.mkdir()
+    target = root / "page.html"
+    target.write_text("safe")
+    secret = tmp_path / "secret"
+    secret.write_text("secret")
+    original_open = os.open
+
+    def swap(path, flags, *args, **kwargs):
+        if path == "page.html":
+            target.unlink()
+            target.symlink_to(secret)
+        return original_open(path, flags, *args, **kwargs)
+
+    monkeypatch.setattr(os, "open", swap)
+    with pytest.raises(OSError):
+        _open_contained(root, "/page.html")
