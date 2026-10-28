@@ -135,7 +135,7 @@ function validateNode(schema, value, path, state) {
       });
       return;
     }
-    if (!declaredTypes.some((type) => typeMatches(value, type))) {
+    if (!state.schemaOnly && !declaredTypes.some((type) => typeMatches(value, type))) {
       state.errors.push({
         path,
         keyword: "type",
@@ -153,7 +153,7 @@ function validateNode(schema, value, path, state) {
         keyword: "enum",
         message: "enum must be a non-empty array",
       });
-    } else {
+    } else if (!state.schemaOnly) {
       const serialised = canonicalJson(value);
       if (!allowed.some((candidate) => canonicalJson(candidate) === serialised)) {
         state.errors.push({
@@ -267,10 +267,28 @@ function describeValue(value) {
  * @param {{warnUnsupported?: boolean}} [options]
  * @returns {{valid: boolean, errors: object[], warnings: object[]}}
  */
+function validateSchema(schema, path, state) {
+  validateNode(schema, undefined, path, state);
+  if (!isPlainObject(schema)) return;
+  if (isPlainObject(schema.properties)) {
+    for (const [name, child] of Object.entries(schema.properties)) {
+      validateSchema(child, pointer(pointer(path, "properties"), name), state);
+    }
+  }
+  if (isPlainObject(schema.items)) {
+    validateSchema(schema.items, pointer(path, "items"), state);
+  }
+}
+
 export function validate(schema, document, { warnUnsupported = false } = {}) {
-  const state = { errors: [], warnings: [], warnUnsupported };
+  const schemaState = { errors: [], warnings: [], warnUnsupported, schemaOnly: true };
+  validateSchema(schema, "", schemaState);
+  if (schemaState.errors.length) {
+    return { valid: false, errors: schemaState.errors, warnings: schemaState.warnings };
+  }
+  const state = { errors: [], warnings: [], warnUnsupported: true };
   validateNode(schema, document, "", state);
-  return { valid: state.errors.length === 0, errors: state.errors, warnings: state.warnings };
+  return { valid: state.errors.length === 0, errors: state.errors, warnings: schemaState.warnings };
 }
 
 /**
