@@ -20,12 +20,30 @@ def _handler_for(root: Path):
         def log_message(self, format, *args):  # noqa: A002 - stdlib signature
             """Keep test output quiet."""
 
-        def translate_path(self, path):
-            resolved = Path(super().translate_path(path)).resolve()
+        def _allowed_request(self):
+            expected = f"127.0.0.1:{self.server.server_port}"
+            host = self.headers.get("Host", "")
+            origin = self.headers.get("Origin")
+            return host == expected and (origin is None or origin == f"http://{expected}")
+
+        def do_GET(self):
+            if not self._allowed_request():
+                self.send_error(403)
+                return
+            super().do_GET()
+
+        def do_HEAD(self):
+            if not self._allowed_request():
+                self.send_error(403)
+                return
+            super().do_HEAD()
+
+        def send_head(self):
+            resolved = Path(super().translate_path(self.path)).resolve()
             if resolved != root_resolved and root_resolved not in resolved.parents:
-                # Never serve outside the built site.
-                return str(root_resolved / "__not_found__")
-            return str(resolved)
+                self.send_error(404)
+                return None
+            return super().send_head()
 
     return Handler
 
