@@ -152,7 +152,7 @@ def load_config(
         config_path = Path(path)
         try:
             text = config_path.read_text(encoding="utf-8")
-        except OSError as error:
+        except (OSError, UnicodeError) as error:
             raise ConfigError(f"cannot read config {config_path}: {error}") from error
         try:
             loaded = json.loads(text)

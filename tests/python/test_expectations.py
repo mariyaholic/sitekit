@@ -90,3 +90,18 @@ def test_rejects_empty_strings_and_bad_notes(example_catalog):
     catalog["rooms"][0]["items"][0]["note"] = 4
     with pytest.raises(ExpectationError, match="note: expected a non-empty string"):
         from_catalog(catalog)
+
+
+@pytest.mark.parametrize("status", [[], {}, None])
+def test_rejects_non_string_status(example_catalog, status):
+    catalog = clone(example_catalog)
+    catalog["rooms"][0]["status"] = status
+    with pytest.raises(ExpectationError, match="status: expected one of"):
+        from_catalog(catalog)
+
+
+def test_rejects_slug_with_trailing_newline(example_catalog):
+    catalog = clone(example_catalog)
+    catalog["rooms"][0]["id"] += "\n"
+    with pytest.raises(ExpectationError, match="expected a slug"):
+        from_catalog(catalog)

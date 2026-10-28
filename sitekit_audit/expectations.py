@@ -78,7 +78,7 @@ def from_catalog(data: object) -> SiteExpectation:
             problems.append(f"{base}: expected an object")
             continue
         room_id = room.get("id")
-        if not isinstance(room_id, str) or not SLUG.match(room_id):
+        if not isinstance(room_id, str) or not SLUG.fullmatch(room_id):
             problems.append(f"{base}/id: expected a slug")
             continue
         if room_id in seen_rooms:
@@ -87,7 +87,7 @@ def from_catalog(data: object) -> SiteExpectation:
         seen_rooms.add(room_id)
 
         status = room.get("status")
-        if status not in STATUS_LABELS:
+        if not isinstance(status, str) or status not in STATUS_LABELS:
             problems.append(f"{base}/status: expected one of {', '.join(STATUS_LABELS)}")
             status_label = ""
         else:
@@ -113,7 +113,7 @@ def from_catalog(data: object) -> SiteExpectation:
                     problems.append(f"{item_base}: expected an object")
                     continue
                 item_id = item.get("id")
-                if not isinstance(item_id, str) or not SLUG.match(item_id):
+                if not isinstance(item_id, str) or not SLUG.fullmatch(item_id):
                     problems.append(f"{item_base}/id: expected a slug")
                     continue
                 if item_id in seen_items:
@@ -156,7 +156,7 @@ def load_expectations(path: str | Path) -> SiteExpectation:
     catalog_path = Path(path)
     try:
         text = catalog_path.read_text(encoding="utf-8")
-    except OSError as error:
+    except (OSError, UnicodeError) as error:
         raise ExpectationError(f"cannot read catalog {catalog_path}: {error}") from error
     try:
         data = json.loads(text)
