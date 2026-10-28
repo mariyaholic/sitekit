@@ -1,0 +1,2 @@
+# Runtime dependency of the optional browser audit.
+playwright>=1.40,<2
