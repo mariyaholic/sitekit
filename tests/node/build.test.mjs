@@ -39,7 +39,8 @@ test("builds every output with the CLI", async (t) => {
   assert.equal(result.status, 0, result.stderr);
   assert.match(result.stdout, /wrote 8 files/);
 
-  const files = (await readdir(paths.out, { recursive: true })).sort();
+  const files = (await readdir(paths.out, { recursive: true }))
+    .map((path) => path.replaceAll("\\", "/")).sort();
   assert.deepEqual(files, [
     "assets",
     "assets/rooms",
