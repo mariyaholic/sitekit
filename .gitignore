@@ -13,3 +13,4 @@ tests/tmp/
 node_modules/
 coverage/
 scratch/
+.progress.md
