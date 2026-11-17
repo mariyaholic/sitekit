@@ -2,18 +2,11 @@ Made by Maria
 
 # sitekit
 
-Release a catalog-driven static-page generator and browser audit gate as an
-Apache-2.0 developer tool.
+Hello! sitekit is my little catalog-driven static-page generator with a browser audit gate, released as an Apache-2.0 developer tool. I feed it a room-style catalog and it renders a deterministic static page and Markdown. Then it checks the built page in a real browser against the same catalog. I like that the page and its checks always agree, and I hope you find it handy too.
 
-free and open source (Apache-2.0). See [LICENSE](LICENSE) and [NOTICE](NOTICE).
+It is free and open source (Apache-2.0). See [LICENSE](LICENSE) and [NOTICE](NOTICE).
 
-sitekit renders one room-style catalog into a deterministic static page and
-Markdown, then checks the built page in a real browser against the same
-catalog: room and item counts, navigation, the details interaction,
-reduced-motion behaviour, theme tokens and horizontal overflow at narrow and
-wide viewports. It is deliberately narrow; see
-[docs/CONTRACT.md](docs/CONTRACT.md) for the supported catalog, markup and
-CLI contract, and [ROADMAP.md](ROADMAP.md) for what is out of scope.
+The audit checks room and item counts, navigation, the details interaction, reduced-motion behaviour, theme tokens and horizontal overflow at narrow and wide viewports. I kept the scope deliberately narrow, and I like it that way. See [docs/CONTRACT.md](docs/CONTRACT.md) for the supported catalog, markup and CLI contract, and [ROADMAP.md](ROADMAP.md) for what stays out of scope.
 
 ## Requirements
 
@@ -34,8 +27,7 @@ node build.mjs --check         # CI gate: fails when dist/ is stale
 .venv/bin/python audit.py      # browser audit, writes audit-report.json
 ```
 
-Change a catalog entry, run `node build.mjs --check`, and stale generated
-files are named without anything being written.
+When I change a catalog entry, I run `node build.mjs --check`. It names the stale generated files and writes nothing.
 
 The deterministic build and freshness check also run together via
 `./scripts/build.sh` or `scripts/build.ps1` on Windows. Generated `dist/`
@@ -43,8 +35,7 @@ and `audit-report.json` are local outputs and are not tracked.
 
 ## Usage and configuration
 
-Configure audit viewports, tokens and paths with `--config audit.config.json`;
-CLI flags override configuration values. See [the contract](docs/CONTRACT.md).
+I configure audit viewports, tokens and paths with `--config audit.config.json`; CLI flags override configuration values. See [the contract](docs/CONTRACT.md).
 
 ## Commands
 
@@ -61,7 +52,7 @@ CLI flags override configuration values. See [the contract](docs/CONTRACT.md).
 Exit codes: builder `0` success, `1` invalid input or stale output, `2` usage
 or I/O error. Audit `0` all checks pass, `1` a check failed, `2` setup failed
 (missing Playwright, browser or config). A missing browser is an explicit
-failure, never a silent pass.
+failure, never a silent pass. I care about that part a lot.
 
 ## Supported contract
 
@@ -93,7 +84,7 @@ The builder never uses the network. The audit starts a loopback HTTP server on
 `127.0.0.1` with a random port to serve the local built site, and uses
 Playwright against a local browser; nothing is uploaded and there is no
 telemetry. Installation of Playwright and its browser is a one-time developer
-step.
+step. I like that everything stays on your machine.
 
 ## Status
 
@@ -108,3 +99,5 @@ See [docs/TESTING.md](docs/TESTING.md) for test guidance, and
 
 Python requirements pin the reviewed runtime and test dependencies exactly.
 See [THIRD_PARTY.md](THIRD_PARTY.md) for dependency licence policy and asset provenance.
+
+Thank you for reading. ♡
